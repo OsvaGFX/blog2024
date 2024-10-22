@@ -1,0 +1,15 @@
+<!-- plantillas/eliminar_pub.html -->
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <h1>Eliminar contenido</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>
+            ¿Está usted completamente seguro, sin ninguna duda, mientras hace uso
+            de todas sus facultades mentales, que desea eliminar la publicación
+            "{{ publicacion.titulo }}"?
+        </p>
+        <button type="submit">Confirmar</button>
+    </form>
+{% endblock contenido %}

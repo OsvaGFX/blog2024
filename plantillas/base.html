@@ -1,5 +1,4 @@
-<!-- plantillas/base.html -->
- {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +10,21 @@
 </head>
 <body>
     <header>
-        <h1><a href="(% url 'inicio' %)">Blog en django</a></h1>
+    <div class="nav-izq">
+        <h1><a href="{% url 'inicio' %}">Blog en django</a></h1>
+    </div>
+    <div class="nav-der">
+        <a href="{% url 'nueva_pub' %}">+ Nueva publicación</a>
+    </div>
     </header>
+    {% if user.is_authenticated %}
+        <p>Hola {{user.username}}</p>
+        <p><a href="{% url 'logout' %}">Salir</a></p>  <!-- Espacio eliminado -->
+    {% else %}
+        <p>No ha iniciado sesión.</p>
+        <a href="{% url 'login' %}">Acceso</a>
+        <a href="{% url 'signup' %}">Registro</a>
+    {% endif %}
     <div>
         {% block contenido %}
         {% endblock contenido %}
